@@ -7,13 +7,13 @@ Started as Mayhem chess960 engine.
 100% UCI support as in Mayhem.
 Designed to be GUI independent. You only need the binary.
 
-## Mayhem Chess variant
+## Link to the variant
 
 [Mayhem Chess variant](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
 
 ## Demo / Release
 
-v0.1 version of real Paladin is released to the public.
+v0.1 of real Paladin is released to the public
 
 ## Signatures
 
@@ -36,8 +36,9 @@ Normal chess rules except ...
 - The Janus pawns (= pawns) may capture forward and backward
 - Castling is not permitted
 - En passant captures are not legal
+- The Queen is restricted to 4 moves max
 
-## Perft
+## Board
 
 ```
 p
@@ -61,8 +62,12 @@ p
  +---+---+---+---+---+---+---+---+
    a   b   c   d   e   f   g   h
 > anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA w 0 1
+```
 
-perft
+## Perft (startpos)
+
+```
+perft 5 anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA_w_0_1
 1. a2a3 -> 4727934 (94 ms)
 2. a2a4 -> 4920704 (87 ms)
 3. h2h3 -> 4721448 (83 ms)
