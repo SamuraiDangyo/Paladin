@@ -1,4 +1,4 @@
-[!Paladin](https://github.com/SamuraiDangyo/Paladin/blob/master/logo.png)
+![Paladin](https://github.com/SamuraiDangyo/Paladin/blob/main/logo.png)
 
 # Paladin
 
@@ -7,9 +7,9 @@ Started as Mayhem chess960 engine.
 100% UCI support as in Mayhem.
 Designed to be GUI independent. You only need the binary.
 
-## Mayhem chess variant
+## Mayhem Chess variant
 
-[mayhem variant](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
+[Mayhem Chess variant](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
 
 ## Demo / Release
 
