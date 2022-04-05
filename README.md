@@ -2,9 +2,9 @@
 
 # Paladin
 
-Linux Mayhem Chess variant engine.
+Linux mayhem chess variant engine.
 Written in C++17.
-Started as Mayhem Chess960 engine.
+Modified from Mayhem Chess960 engine.
 Only mayhem chess variant supported.
 
 ## Design goals
@@ -43,12 +43,12 @@ bench -> 10386698
 
 Normal chess rules except ...
 
-- The Paladin is archbishop N+B
+- The Paladin is archbishop (= N+B)
 - The Janus pawns (= pawns) may capture forward and backward
 - Castling is not permitted
 - En passant captures are not legal
 - The Queen is restricted to 4 moves max
-- [Mayhem Chess variant Rules](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
+- [Rules](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
 
 ## Nice ASCII art board
 
