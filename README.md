@@ -2,7 +2,8 @@
 
 # Paladin
 
-Linux Mayhem Chess variant engine. Written in C++17
+Linux Mayhem Chess variant engine.
+Written in C++17.
 Started as Mayhem Chess960 engine.
 Only mayhem chess variant supported.
 
@@ -14,15 +15,12 @@ Only mayhem chess variant supported.
 - Robust and small codebase. Paladin is super stable
 - Nice internal GUI. You only need the binary
 
-## Link to the mayhem chess variant
-
-[Mayhem Chess variant](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
-
 ## Versions
 
-- v0.1: Initial release
-- v1.0: Current. First really good version.
-  Tons of bug fixes / improvements. Whole codebase is modular and OOP
+- ~~v0.1: Initial release~~
+- ~~v1.0: First really good version. Tons of bug fixes / improvements.
+  The whole codebase is modular and OOP~~
+- v1.1: More perft tools
 
 ## Demo
 
@@ -34,7 +32,7 @@ And sold to public.
 
 ```
 perft -> 220873071
-bench -> 9793187
+bench -> 10386698
 ```
 
 ## Mayhem chess variant startpos
@@ -50,6 +48,7 @@ Normal chess rules except ...
 - Castling is not permitted
 - En passant captures are not legal
 - The Queen is restricted to 4 moves max
+- [Mayhem Chess variant Rules](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
 
 ## Nice ASCII art board
 
@@ -224,6 +223,52 @@ Time(ms): 90270
 NPS:      26845443
 ```
 
+## Perftd
+
+`> perftd 5`
+
+```
+0 -> 1 (0 ms)
+1 -> 51 (0 ms)
+2 -> 2368 (1 ms)
+3 -> 109809 (6 ms)
+4 -> 4909847 (187 ms)
+5 -> 220873071 (7947 ms)
+
+===========================
+
+Nodes:    225895147
+Time(ms): 8141
+NPS:      27747837
+```
+## Perfth
+
+`> perfth`
+
+```
+[ 1/6 : 6k1/7p/2pA1p2/p7/1p4a1/1P1N1p2/P4P2/K1P5 w 0 1 ; bm c3c2 ]
+[ 85485034 nodes / 3151 ms / 6 d / 27129493 nps ]
+
+[ 2/6 : 4k3/8/4Ap2/p1p5/Pp2a3/1P3N1p/4KP2/2P5 w 38 1 ; bm e6h3 ]
+[ 74841368 nodes / 3214 ms / 6 d / 23286051 nps ]
+
+[ 3/6 : 8/5ak1/8/p1p5/Pp3N2/1P1A1P2/6K1/8 w 6 1 ; bm d3f5 ]
+[ 100383108 nodes / 3751 ms / 6 d / 26761692 nps ]
+
+[ 4/6 : Anp1kpn1/p6p/1pp1p1p1/4N3/3P4/1PN1P3/P4P1P/a1PK1P2 w 0 1 ; bm e5c6 ]
+[ 145677254 nodes / 6242 ms / 6 d / 23338233 nps ]
+
+[ 5/6 : 8/1K6/8/p4Qp1/q6p/k6P/8/8 w 1 1 ; bm b7a6 ]
+[ 48837131 nodes / 2158 ms / 6 d / 22630737 nps ]
+
+[ 6/6 : 8/3K4/8/p1pP2p1/Pk5p/7P/8/5P2 w 0 1 ; bm d7c6 ]
+[ 164792 nodes / 8 ms / 6 d / 20599000 nps ]
+
+===========================
+
+[ 455388687 nodes / 18524 ms / 6 d / 24583712 nps ]
+```
+
 ## Play or watch games in Paladin
 
 Game: AI vs AI (1000ms + 1000ms)
@@ -279,9 +324,6 @@ Finished: 3.33333%
 
 ...
 
-Finished: 100%
-2624 - 2620 - 24756 [0.500067] 30000
-
 ===========================
 
 100% / 2897gps / 10355ms
@@ -295,14 +337,15 @@ Finished: 100%
 ```
 help                    This help
 perft [d?] [fen?]       Run Perft
+perftd [d?] [fen?]      Run PerftDepth
+perfth [d?]             Run PerftHash
 bench [d?] [s?] [h?]    Run Bench
 p [fen?]                Show ASCII art board
 u64 [bb]                Show ASCII art u64
 version                 Show version
 flip                    Flip the board
 quit                    Quit program
-info                    Show program information
-eval                    Show evaluation
+debug                   Debugging
 show                    Show history
 clear                   Clear history
 add [fen?]              Push position to history
