@@ -2,33 +2,46 @@
 
 # Paladin
 
-Linux mayhem chess variant engine.
+Linux mayhem chess engine. Written in C++17
 Started as Mayhem chess960 engine.
-100% UCI support as in Mayhem.
-Designed to be GUI independent. You only need the binary.
+Only mayhem chess variant supported.
+
+## Design goals
+
+- Paladin is designed to be GUI independent. Full UCI support as in Mayhem.
+- Paladin is lightweight and simple
+- OOP / modular design. No globals as in Mayhem
+- Robust and small codebase. Paladin is super stable
+- Nice internal GUI. You only need the binary
 
 ## Link to the variant
 
 [Mayhem Chess variant](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
 
+## Versions
+
+- v0.1: Initial release
+- v1.0: Current. First really good version.
+  Tons of bug fixes / improvements. Whole codebase is modular and OOP.
+
 ## Demo / Release
 
-v0.1 of real Paladin is released to the public
+v0.1 of real Paladin is released to the public.
+Paladins are given for free to testers. (Please contact by email).
+And sold to public.
 
 ## Signatures
 
 ```
-perft -> 222447094
-bench -> 9154591
+perft -> 220873071
+bench -> 10773562
 ```
 
-## Mayhem variant StartPos
+## Mayhem chess startpos
 
-```
-anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA w 0 1
-```
+`anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA w 0 1`
 
-## Mayhem chess Rules
+## Mayhem chess rules
 
 Normal chess rules except ...
 
@@ -38,11 +51,11 @@ Normal chess rules except ...
 - En passant captures are not legal
 - The Queen is restricted to 4 moves max
 
-## Board
+## Nice ASCII art board
+
+`> p`
 
 ```
-p
-
  +---+---+---+---+---+---+---+---+
  | a | n | p | q | k | p | n | a | 8
  +---+---+---+---+---+---+---+---+
@@ -64,325 +77,223 @@ p
 > anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA w 0 1
 ```
 
-## Bench
+## Full perft support
+
+`> perft`
 
 ```
-bench inf 10000
-[ 1/6 ; 6k1/7p/2pA1p2/p7/1p4a1/1PKN1p2/P4P2/2P5 w 0 1 ; bm c3c2 ]
-info depth 1 nodes 14 time 0 nps 14000 score cp 210 pv d3b4
-info depth 2 nodes 296 time 0 nps 296000 score cp 150 pv c3c2
-info depth 3 nodes 1118 time 0 nps 1118000 score cp 104 pv c3c2
-info depth 4 nodes 1706 time 0 nps 1706000 score cp 125 pv c3c2
-info depth 5 nodes 4165 time 0 nps 4165000 score cp 119 pv c3c2
-info depth 6 nodes 7010 time 1 nps 7010000 score cp 133 pv c3c2
-info depth 7 nodes 20000 time 2 nps 10000000 score cp 95 pv c3c2
-info depth 8 nodes 31265 time 3 nps 10421666 score cp 108 pv c3c2
-info depth 9 nodes 54960 time 5 nps 10992000 score cp 101 pv c3c2
-info depth 10 nodes 105503 time 11 nps 9591181 score cp 146 pv c3c2
-info depth 11 nodes 217332 time 22 nps 9878727 score cp 128 pv c3c2
-info depth 12 nodes 473444 time 49 nps 9662122 score cp 122 pv c3c2
-info depth 13 nodes 1321263 time 130 nps 10163561 score cp 108 pv c3c2
-info depth 14 nodes 2799773 time 285 nps 9823764 score cp 113 pv c3c2
-info depth 15 nodes 4640824 time 466 nps 9958849 score cp 121 pv c3c2
-info depth 16 nodes 9638064 time 996 nps 9676771 score cp 144 pv c3c2
-info depth 17 nodes 27481573 time 2723 nps 10092388 score cp 134 pv c3c2
-info depth 18 nodes 50782049 time 5133 nps 9893249 score cp 118 pv c3c2
-info depth 19 nodes 89798938 time 8913 nps 10075051 score cp 140 pv c3c2
-info depth 20 nodes 99923433 time 10000 nps 9992343 score cp 140 pv c3c2
-
-[ 2/6 ; 4k3/8/4Ap2/p1p5/Pp2a3/1P3N1p/4KP2/2P5 w 38 1 ; bm e6h3 ]
-info depth 1 nodes 60 time 0 nps 60000 score cp 244 pv e6h3
-info depth 2 nodes 415 time 0 nps 415000 score cp 277 pv e6h3
-info depth 3 nodes 2319 time 0 nps 2319000 score cp 278 pv e6h3
-info depth 4 nodes 4501 time 0 nps 4501000 score cp 302 pv e6h3
-info depth 5 nodes 7694 time 0 nps 7694000 score cp 293 pv e6h3
-info depth 6 nodes 15136 time 1 nps 15136000 score cp 297 pv e6h3
-info depth 7 nodes 34494 time 3 nps 11498000 score cp 299 pv e6h3
-info depth 8 nodes 59838 time 6 nps 9973000 score cp 309 pv e6h3
-info depth 9 nodes 120679 time 12 nps 10056583 score cp 301 pv e6h3
-info depth 10 nodes 234569 time 25 nps 9382760 score cp 301 pv e6h3
-info depth 11 nodes 408291 time 42 nps 9721214 score cp 302 pv e6h3
-info depth 12 nodes 661989 time 69 nps 9594043 score cp 314 pv e6h3
-info depth 13 nodes 1039245 time 107 nps 9712570 score cp 308 pv e6h3
-info depth 14 nodes 1683809 time 173 nps 9733000 score cp 310 pv e6h3
-info depth 15 nodes 4526402 time 457 nps 9904599 score cp 306 pv e6h3
-info depth 16 nodes 7600144 time 760 nps 10000189 score cp 323 pv e6h3
-info depth 17 nodes 12994211 time 1295 nps 10034139 score cp 315 pv e6h3
-info depth 18 nodes 31522090 time 3200 nps 9850653 score cp 304 pv e6h3
-info depth 19 nodes 48745213 time 4985 nps 9778377 score cp 307 pv e6h3
-info depth 20 nodes 94978800 time 9934 nps 9560982 score cp 304 pv e6h3
-info depth 21 nodes 95468166 time 10000 nps 9546816 score cp 304 pv e6h3
-
-[ 3/6 ; 8/5ak1/8/p1p5/Pp3N2/1P1A1P2/6K1/8 w 6 1 ; bm d3f5 ]
-info depth 1 nodes 62 time 0 nps 62000 score cp 402 pv d3c5
-info depth 2 nodes 1239 time 0 nps 1239000 score cp 352 pv d3b2
-info depth 3 nodes 2915 time 0 nps 2915000 score cp 352 pv d3b2
-info depth 4 nodes 4932 time 0 nps 4932000 score cp 368 pv d3b2
-info depth 5 nodes 10388 time 1 nps 10388000 score cp 337 pv d3b2
-info depth 6 nodes 16075 time 1 nps 16075000 score cp 369 pv d3b2
-info depth 7 nodes 70543 time 6 nps 11757166 score cp 332 pv d3b2
-info depth 8 nodes 107841 time 10 nps 10784100 score cp 347 pv d3b2
-info depth 9 nodes 175839 time 17 nps 10343470 score cp 347 pv d3b2
-info depth 10 nodes 333415 time 33 nps 10103484 score cp 347 pv d3b2
-info depth 11 nodes 718953 time 68 nps 10572838 score cp 329 pv d3b2
-info depth 12 nodes 1984280 time 191 nps 10388900 score cp 333 pv d3f5
-info depth 13 nodes 3676678 time 340 nps 10813758 score cp 325 pv d3b2
-info depth 14 nodes 5020089 time 465 nps 10795890 score cp 335 pv d3b2
-info depth 15 nodes 11358414 time 1043 nps 10890138 score cp 328 pv d3b2
-info depth 16 nodes 17533681 time 1624 nps 10796601 score cp 333 pv d3b2
-info depth 17 nodes 29488320 time 2647 nps 11140279 score cp 327 pv d3f5
-info depth 18 nodes 105673025 time 9842 nps 10736946 score cp 323 pv d3f5
-info depth 19 nodes 107656403 time 10000 nps 10765640 score cp 323 pv d3f5
-
-[ 4/6 ; Anp1kpn1/p6p/1pp1p1p1/4N3/3P4/1PN1P3/P4P1P/a1PK1P2 w 0 1 ; bm e5c6 ]
-info depth 1 nodes 62 time 0 nps 62000 score cp 300 pv a8c6
-info depth 2 nodes 762 time 0 nps 762000 score cp 133 pv e5c6
-info depth 3 nodes 4630 time 0 nps 4630000 score cp 140 pv e5c6
-info depth 4 nodes 6104 time 1 nps 6104000 score cp 149 pv e5c6
-info depth 5 nodes 19968 time 2 nps 9984000 score cp 118 pv e5c6
-info depth 6 nodes 33674 time 4 nps 8418500 score cp 128 pv e5c6
-info depth 7 nodes 76601 time 9 nps 8511222 score cp 142 pv e5c6
-info depth 8 nodes 129375 time 17 nps 7610294 score cp 137 pv e5c6
-info depth 9 nodes 235549 time 30 nps 7851633 score cp 137 pv e5c6
-info depth 10 nodes 445087 time 57 nps 7808543 score cp 220 pv e5c6
-info depth 11 nodes 649455 time 80 nps 8118187 score cp 223 pv e5c6
-info depth 12 nodes 981361 time 119 nps 8246731 score cp 223 pv e5c6
-info depth 13 nodes 2275796 time 276 nps 8245637 score cp 259 pv e5c6
-info depth 14 nodes 12005097 time 1362 nps 8814314 score cp 302 pv e5c6
-info depth 15 nodes 20244970 time 2306 nps 8779258 score cp 273 pv e5c6
-info depth 16 nodes 39528735 time 4278 nps 9240003 score cp 273 pv e5c6
-info depth 17 nodes 59245293 time 6478 nps 9145614 score cp 273 pv e5c6
-info depth 18 nodes 82917540 time 9059 nps 9153056 score cp 286 pv e5c6
-info depth 19 nodes 91925543 time 10000 nps 9192554 score cp 286 pv e5c6
-
-[ 5/6 ; 8/1K6/8/p4Qp1/q6p/k6P/8/8 w 1 1 ; bm b7a6 ]
-info depth 1 nodes 58 time 0 nps 58000 score cp -61 pv f5g5
-info depth 2 nodes 604 time 0 nps 604000 score cp -153 pv f5e5
-info depth 3 nodes 3035 time 0 nps 3035000 score cp -163 pv b7a6
-info depth 4 nodes 5522 time 1 nps 5522000 score cp -141 pv b7a6
-info depth 5 nodes 12426 time 1 nps 12426000 score cp -173 pv b7a6
-info depth 6 nodes 27031 time 3 nps 9010333 score cp -167 pv b7a6
-info depth 7 nodes 46252 time 5 nps 9250400 score cp -167 pv b7a6
-info depth 8 nodes 109695 time 11 nps 9972272 score cp -152 pv b7a6
-info depth 9 nodes 178968 time 17 nps 10527529 score cp -152 pv b7a6
-info depth 10 nodes 372133 time 34 nps 10945088 score cp -143 pv b7a6
-info depth 11 nodes 765988 time 70 nps 10942685 score cp -146 pv b7a6
-info depth 12 nodes 2226491 time 201 nps 11077069 score cp -137 pv b7a6
-info depth 13 nodes 3456384 time 311 nps 11113774 score cp -145 pv b7a6
-info depth 14 nodes 5486029 time 489 nps 11218873 score cp -137 pv b7a6
-info depth 15 nodes 11541448 time 1019 nps 11326249 score cp -143 pv b7a6
-info depth 16 nodes 26868708 time 2393 nps 11228043 score cp -133 pv b7a6
-info depth 17 nodes 57396176 time 5059 nps 11345359 score cp -143 pv b7a6
-info depth 18 nodes 87590438 time 7695 nps 11382772 score cp -139 pv b7a6
-info depth 19 nodes 114019918 time 10000 nps 11401991 score cp -139 pv b7a6
-
-[ 6/6 ; 8/3K4/8/p1pP2p1/Pk5p/7P/8/5P2 w 0 1 ; bm d7c6 ]
-info depth 1 nodes 18 time 0 nps 18000 score cp 16 pv d5d6
-info depth 2 nodes 99 time 0 nps 99000 score cp -15 pv d7c6
-info depth 3 nodes 259 time 0 nps 259000 score cp -15 pv d7c6
-info depth 4 nodes 403 time 0 nps 403000 score cp 4 pv d7c6
-info depth 5 nodes 664 time 0 nps 664000 score cp 5 pv d7c6
-info depth 6 nodes 1111 time 0 nps 1111000 score cp 6 pv d7c6
-info depth 7 nodes 2063 time 0 nps 2063000 score cp 1 pv d7c6
-info depth 8 nodes 3560 time 0 nps 3560000 score cp -3 pv d7c6
-info depth 9 nodes 5064 time 0 nps 5064000 score cp -8 pv d7c6
-info depth 10 nodes 7229 time 0 nps 7229000 score cp 0 pv d7c6
-info depth 11 nodes 48074 time 3 nps 16024666 score cp -89 pv d7c6
-info depth 12 nodes 68414 time 5 nps 13682800 score cp -74 pv d7c6
-info depth 13 nodes 91344 time 6 nps 15224000 score cp -88 pv d7c6
-info depth 14 nodes 179247 time 12 nps 14937250 score cp -104 pv d7c6
-info depth 15 nodes 265641 time 19 nps 13981105 score cp -110 pv d7c6
-info depth 16 nodes 699699 time 45 nps 15548866 score cp -110 pv d7c6
-info depth 17 nodes 1506218 time 89 nps 16923797 score cp -129 pv d7c6
-info depth 18 nodes 2984211 time 183 nps 16307163 score cp -130 pv d7c6
-info depth 19 nodes 10420743 time 656 nps 15885278 score cp -133 pv d7c6
-info depth 20 nodes 22311931 time 1415 nps 15768149 score cp -129 pv d7c6
-info depth 21 nodes 34065485 time 2190 nps 15555015 score cp -143 pv d7c6
-info depth 22 nodes 49524595 time 3210 nps 15428222 score cp -131 pv d7c6
-info depth 23 nodes 67099332 time 4354 nps 15410962 score cp -140 pv d7c6
-info depth 24 nodes 102559367 time 6958 nps 14739776 score cp -170 pv d7c6
-info depth 25 nodes 139125862 time 9338 nps 14898892 score cp -122 pv d7c6
-info depth 26 nodes 150447908 time 10000 nps 15044790 score cp -122 pv d7c6
+1. a2a3 -> 4708983 (175 ms)
+2. a2a4 -> 4903248 (176 ms)
+3. h2h3 -> 4702557 (169 ms)
+4. h2h4 -> 4902192 (175 ms)
+5. b3b4 -> 5141188 (185 ms)
+6. d3d4 -> 4094107 (147 ms)
+7. e3e4 -> 3950318 (142 ms)
+8. g3g4 -> 4635327 (169 ms)
+9. b1d2 -> 4305516 (155 ms)
+10. b1a3 -> 4570894 (165 ms)
+11. b1c3 -> 3427298 (126 ms)
+12. g1e2 -> 3706298 (135 ms)
+13. g1f3 -> 3063821 (112 ms)
+14. g1h3 -> 4585751 (165 ms)
+15. a1b2 -> 5043975 (180 ms)
+16. a1c3 -> 4666344 (165 ms)
+17. a1d4 -> 5614281 (198 ms)
+18. a1e5 -> 5243773 (184 ms)
+19. a1f6 -> 291536 (11 ms)
+20. a1g7 -> 435566 (15 ms)
+21. a1h8 -> 3927224 (139 ms)
+22. h1g2 -> 5121856 (183 ms)
+23. h1f3 -> 4499997 (160 ms)
+24. h1e4 -> 5743586 (201 ms)
+25. h1d5 -> 5686627 (199 ms)
+26. h1c6 -> 650539 (23 ms)
+27. h1b7 -> 5140149 (180 ms)
+28. h1a8 -> 4168807 (146 ms)
+29. c2b2 -> 3729746 (139 ms)
+30. c2d2 -> 4135037 (150 ms)
+31. c2e2 -> 3400384 (126 ms)
+32. c2c3 -> 3812732 (139 ms)
+33. c2c4 -> 6117619 (217 ms)
+34. c2c5 -> 6191279 (219 ms)
+35. c2c6 -> 3930853 (139 ms)
+36. c2c7 -> 4922875 (177 ms)
+37. f2d2 -> 3736239 (140 ms)
+38. f2e2 -> 3297285 (125 ms)
+39. f2g2 -> 3444747 (132 ms)
+40. f2f3 -> 3389916 (125 ms)
+41. f2f4 -> 6085595 (217 ms)
+42. f2f5 -> 6150690 (219 ms)
+43. f2f6 -> 3419216 (123 ms)
+44. f2f7 -> 4877887 (177 ms)
+45. d1d2 -> 4379675 (157 ms)
+46. d1e2 -> 4305949 (156 ms)
+47. d1f3 -> 4153199 (148 ms)
+48. d1g4 -> 6557033 (233 ms)
+49. d1h5 -> 6550530 (232 ms)
+50. e1d2 -> 3908200 (149 ms)
+51. e1e2 -> 3444627 (133 ms)
 
 ===========================
 
-Nodes:    659441371
-Time(ms): 60000
-NPS:      10990689
-quit
-Bye!
-
+Nodes:    220873071
+Time(ms): 7952
+NPS:      27775788
 ```
 
-## Perft (startpos)
+## Perft (2)
+
+`> perft 6 2k5/3pnA2/1p6/p2P4/P5p1/1P3P2/5P2/2P1K2a_w_1_1`
 
 ```
-perft 5 anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA_w_0_1
-1. a2a3 -> 4727934 (94 ms)
-2. a2a4 -> 4920704 (87 ms)
-3. h2h3 -> 4721448 (83 ms)
-4. h2h4 -> 4921393 (87 ms)
-5. b3b4 -> 5156646 (91 ms)
-6. d3d4 -> 4103216 (71 ms)
-7. e3e4 -> 3958820 (69 ms)
-8. g3g4 -> 4641706 (84 ms)
-9. b1d2 -> 4325597 (77 ms)
-10. b1a3 -> 4589317 (83 ms)
-11. b1c3 -> 3443355 (61 ms)
-12. g1e2 -> 3712932 (69 ms)
-13. g1f3 -> 3069883 (54 ms)
-14. g1h3 -> 4604362 (82 ms)
-15. a1b2 -> 5061733 (91 ms)
-16. a1c3 -> 4684728 (84 ms)
-17. a1d4 -> 5625168 (100 ms)
-18. a1e5 -> 5256626 (95 ms)
-19. a1f6 -> 293990 (5 ms)
-20. a1g7 -> 436647 (8 ms)
-21. a1h8 -> 3944857 (70 ms)
-22. d1e2 -> 4323892 (77 ms)
-23. d1f3 -> 4305133 (72 ms)
-24. d1g4 -> 6869211 (119 ms)
-25. d1h5 -> 6988017 (119 ms)
-26. h1g2 -> 5141167 (92 ms)
-27. h1f3 -> 4508861 (81 ms)
-28. h1e4 -> 5755226 (101 ms)
-29. h1d5 -> 5699149 (100 ms)
-30. h1c6 -> 651716 (12 ms)
-31. h1b7 -> 5158941 (91 ms)
-32. h1a8 -> 4185375 (73 ms)
-33. d1d2 -> 4399728 (76 ms)
-34. c2b2 -> 3747195 (67 ms)
-35. c2d2 -> 4156687 (74 ms)
-36. c2e2 -> 3408403 (62 ms)
-37. c2c3 -> 3829865 (67 ms)
-38. c2c4 -> 6132120 (109 ms)
-39. c2c5 -> 6207610 (109 ms)
-40. c2c6 -> 3946799 (68 ms)
-41. c2c7 -> 4947973 (89 ms)
-42. f2d2 -> 3755143 (67 ms)
-43. f2e2 -> 3303464 (62 ms)
-44. f2g2 -> 3461057 (63 ms)
-45. f2f3 -> 3396833 (61 ms)
-46. f2f4 -> 6098381 (110 ms)
-47. f2f5 -> 6165016 (112 ms)
-48. f2f6 -> 3427461 (62 ms)
-49. f2f7 -> 4897644 (91 ms)
-50. e1d2 -> 3924681 (75 ms)
-51. e1e2 -> 3453284 (66 ms)
+1. c1c2 -> 1440569 (64 ms)
+2. b3b4 -> 1647910 (66 ms)
+3. f3g4 -> 1725711 (66 ms)
+4. f3f4 -> 1810289 (71 ms)
+5. d5d6 -> 1078242 (43 ms)
+6. f7e5 -> 1905425 (77 ms)
+7. f7g5 -> 1631733 (64 ms)
+8. f7h5 -> 1260144 (50 ms)
+9. f7d6 -> 98670 (4 ms)
+10. f7e6 -> 1332987 (54 ms)
+11. f7g6 -> 1791672 (71 ms)
+12. f7h6 -> 1463272 (56 ms)
+13. f7d8 -> 729099 (32 ms)
+14. f7e8 -> 1050358 (44 ms)
+15. f7g8 -> 945079 (37 ms)
+16. f7h8 -> 1474279 (56 ms)
+17. e1d1 -> 1483881 (60 ms)
+18. e1f1 -> 1311623 (52 ms)
+19. e1d2 -> 2069975 (83 ms)
+20. e1e2 -> 1607556 (64 ms)
 
 ===========================
 
-Nodes:    222447094
-Time(ms): 3972
-NPS:      56003800
+Nodes:    27858474
+Time(ms): 1114
+NPS:      25007606
 ```
 
-## Play (AI vs AI 1s per move)
+## Perft (3)
+
+`> perft 6 1npqkpn1/p1r4p/1p1ppap1/8/3A4/1PNPP3/P1R2P1P/2PQKPN1_w_1_1`
 
 ```
-play 3 1000
+1. a2a3 -> 71881680 (2666 ms)
+2. a2a4 -> 68352956 (2539 ms)
+3. f2f3 -> 58550706 (2179 ms)
+4. f2f4 -> 77362694 (2848 ms)
+5. h2h3 -> 61167666 (2280 ms)
+6. h2h4 -> 64539270 (2407 ms)
+7. b3b4 -> 71821086 (2661 ms)
+8. e3e4 -> 67821030 (2511 ms)
+9. g1e2 -> 45662051 (1713 ms)
+10. g1f3 -> 55326523 (2073 ms)
+11. g1h3 -> 62315198 (2326 ms)
+12. c3b1 -> 88240839 (3230 ms)
+13. c3e2 -> 60160350 (2224 ms)
+14. c3a4 -> 87711701 (3218 ms)
+15. c3e4 -> 91630710 (3481 ms)
+16. c3b5 -> 82953778 (3135 ms)
+17. c3d5 -> 90427686 (3472 ms)
+18. d4e2 -> 44236928 (1532 ms)
+19. d4f3 -> 71944922 (2540 ms)
+20. d4b5 -> 10429958 (408 ms)
+21. d4c5 -> 70026075 (2572 ms)
+22. d4e5 -> 58823522 (2331 ms)
+23. d4f5 -> 81950508 (3026 ms)
+24. d4b6 -> 74590431 (2709 ms)
+25. d4c6 -> 11228841 (417 ms)
+26. d4e6 -> 79196088 (3009 ms)
+27. d4f6 -> 3014684 (114 ms)
+28. c2b2 -> 80621736 (2961 ms)
+29. c2d2 -> 70729966 (2611 ms)
+30. c2e2 -> 52051500 (1937 ms)
+31. d1d2 -> 56171188 (2082 ms)
+32. d1e2 -> 60581200 (2259 ms)
+33. d1f3 -> 92737872 (3526 ms)
+34. d1g4 -> 103470912 (3910 ms)
+35. d1h5 -> 93500363 (3546 ms)
+36. e1d2 -> 58163214 (2168 ms)
+37. e1e2 -> 43942346 (1649 ms)
 
+===========================
+
+Nodes:    2423338178
+Time(ms): 90270
+NPS:      26845443
+```
+
+## Play or watch games in Paladin
+
+Game: AI vs AI (1000ms + 1000ms)
+
+`> play 3 1000+1000`
+
+```
  +---+---+---+---+---+---+---+---+
- | a | n | p | q | k | p | n | a | 8
+ |   |   | p |   |   |   |   |   | 8
  +---+---+---+---+---+---+---+---+
- | p |   | r |   |   | r |   | p | 7
+ | p |   | k |   |   | p |   |   | 7
  +---+---+---+---+---+---+---+---+
- |   | p |   | p | p |   | p |   | 6
+ | P | p |   |   |   |   | p |   | 6
  +---+---+---+---+---+---+---+---+
- |   |   |   |   |   |   |   |   | 5
+ |   | P | n |   | P |   |   |   | 5
  +---+---+---+---+---+---+---+---+
- |   |   |   |   |   |   |   |   | 4
+ |   | K | P |   |   | P |   |   | 4
  +---+---+---+---+---+---+---+---+
- |   | P |   | P | P |   | P |   | 3
+ |   |   |   |   |   | P |   |   | 3
  +---+---+---+---+---+---+---+---+
- | P |   | R |   |   | R |   | P | 2
+ |   | q |   |   |   |   |   |   | 2
  +---+---+---+---+---+---+---+---+
- | A | N | P | Q | K | P | N | A | 1
+ |   |   |   |   |   |   |   |   | 1
  +---+---+---+---+---+---+---+---+
    a   b   c   d   e   f   g   h
-> anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA w 0 1
-info depth 1 nodes 102 time 0 nps 102000 score cp 837 pv a1h8
-info depth 2 nodes 799 time 0 nps 799000 score cp 25 pv a1h8
-info depth 3 nodes 6265 time 2 nps 3132500 score cp 105 pv h1a8
-info depth 4 nodes 18435 time 8 nps 2304375 score cp 34 pv h1a8
-info depth 5 nodes 37136 time 13 nps 2856615 score cp 107 pv h1a8
-info depth 6 nodes 91841 time 23 nps 3993086 score cp 31 pv h1a8
-info depth 7 nodes 229198 time 42 nps 5457095 score cp 50 pv a1h8
-info depth 8 nodes 441505 time 79 nps 5588670 score cp 32 pv a1h8
-info depth 9 nodes 1007895 time 159 nps 6338962 score cp 40 pv a1h8
-info depth 10 nodes 1677117 time 263 nps 6376870 score cp 55 pv a1h8
-info depth 11 nodes 3585039 time 522 nps 6867890 score cp 45 pv a1h8
-info depth 12 nodes 6984823 time 1000 nps 6984823 score cp 45 pv a1h8
-Move: a1h8
+> 2p5/p1k2p2/Pp4p1/1Pn1P3/1KP2P2/5P2/1q6/8 w 3 1
 
-
-...
-
-[Event "Computer Mayhem Variant Game"]
-[Site "Paladin 0.2"]
-[Date "Thu Mar 31 02:16:06 2022"]
-[White "Paladin 0.2"]
-[Black "Paladin 0.2"]
-[Result "1/2-1/2"]
-[TimeControl "0+1000"]
-a1h8 a8h1 h8d4 f7f2 e3f2 b8c6 d4b5 a7a6 b5a6 c6d4 c2c7 b6c7
-a6b4 c7c5 b4d2 h1c6 g1f3 d8e7 f3d4 c5d4 d2f3 d6d5 c1c2 c6b4
-f3d2 b4c5 d2f3 c5b4 f3d2 b4c5 d1f3 g8f6 d2g5 c5b4 e1e2 e6e5
-a2a3 b4d6 c2c4 d6b7 c4d5 h7h6 g5h6 b7d5 h6g5 d5f3 g5f3 e7f7
-b1d2 f6d5 a3a4 f7b7 b3b4 b7d7 b4b5 d5c3 e2e1 e8f7 d2e4 c3e4
-f3e4 f7g7 e1e2 d7g4 e4f3 g4d7 h2h4 d7e8 g3g4 e8f7 a4a5 f7b3
-a5a6 b3a2 f3d2 f8f7 e2e1 a2a1 e1e2 a1a2 f2f3 g7f6 e2e1 a2a1
-e1f2 a1b2 g4g5 f6g7 f2e1 b2a1 e1e2 a1a2 f3f4 e5f4 g5f4 g7f6
-e2e1 a2a1 e1f2 a1b2 f2e2 b2a2 b5b6 a2a6 d2b3 a6a8 b3d4 f6e7
-f4f5 a8a2 e2e3 a2h2 f5f6 e7f8 d4c5 f8e8 f1f2 h2h3 e3d4 h3g4
-c5e4 g4h4 d4d5 e8d8 d5c6 h4f4 c6d5 f4h4 d5c5 d8d7 f2f3 h4h5
-c5c4 h5h2 e4c5 d7d8 c5d4 h2d6 f3f4 c8c7 b6b7 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6
-d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4d5 f4d6 d5c4 d6f4 c4c3 f4c1
-c3b3 c1d1 b3c4 { Draw } 1/2-1/2
+[Event "Mayhem chess game"]
+[Site  "Paladin 1.0"]
+[Date  "Tue Apr  5 13:15:42 2022"]
+[Fen   "anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA w 0 1"]
+[White "Paladin 1.0"]
+[Black "Paladin 1.0"]
+[Result "0-1"]
+[TimeControl "1000+1000"]
+a1h8 a8h1 h8d4 f7f2 g3f2 h1d5 b1c3 d5f6 d4e6 c7c3 e6d8 e8d8
+b3b4 c3c2 d1c2 g8e7 a2a3 d6d5 b4b5 d8c7 g1e2 b8d7 e2c3 f6g4
+e3e4 d5e4 d3e4 g4h2 c2d2 h2e5 d2e3 d7c5 f2f4 e5g7 a3a4 g7e6
+c3e2 h7h5 e2d4 e6g4 e3c3 c7b7 e4e5 g4f2 e1e2 e7d5 c3a3 f2e4
+c1c2 d5c3 e2e3 c3d5 e3e2 d5c3 e2e3 h5h4 a3c1 h4h3 d4f3 e4f5
+e3d2 f5g4 f3h2 g4h2 d2c3 h2f3 a4a5 h3h2 c3b2 h2h1q a5a6 b7c7
+c2c4 h1g1 b2a2 g1f2 a2a3 f8f7 a3a2 f3d2 c1d2 f2d2 a2a3 d2c2
+f1f2 c2b1 f2f3 b1a1 a3b4 a1b2 { Black wins } 0-1
 ```
 
 ## Monte Carlo analysis
 
+`> monte 30000`
+
 ```
-monte 20000
-Finished: 5%
-93 - 86 - 821 [0.5035] 1000
-
-Finished: 10%
-191 - 167 - 1642 [0.506] 2000
-
-Finished: 15%
-283 - 252 - 2465 [0.505167] 3000
+Finished: 3.33333%
+80 - 90 - 830 [0.495] 1000
 
 ...
 
-Finished: 90%
-1691 - 1646 - 14663 [0.50125] 18000
-
-Finished: 95%
-1794 - 1745 - 15461 [0.501289] 19000
-
 Finished: 100%
-1881 - 1842 - 16277 [0.500975] 20000
+2624 - 2620 - 24756 [0.500067] 30000
 
 ===========================
 
-100% / 5683gps / 3519ms
-1881 - 1842 - 16277 [0.500975] 20000
-
+100% / 2897gps / 10355ms
+2624 - 2620 - 24756 [0.500067] 30000
 ```
 
-## Paladin help
+## Help. All commands
+
+`> help`
 
 ```
-help
+help                    This help
 perft [d?] [fen?]       Run Perft
 bench [d?] [s?] [h?]    Run Bench
 p [fen?]                Show ASCII art board
@@ -403,8 +314,8 @@ analyze [fen?]          Analyze a position (Write 'stop' to stop)
 fen [fen]               Set [fen]
 level [num]             Set AI level (0 -> 100)
                         0        : Random mover
-                        1 -> 100 : Levels 
-monte [N] [fen?]        MonteCarlo analysis
+                        1 -> 100 : Levels
+monte [N] [fen?]        Run monte carlo analysis
                         [N]   : Run for [N] rounds
                         [fen] : Set [fen]
 play [mode] [time]      Play a game
@@ -412,9 +323,9 @@ play [mode] [time]      Play a game
                         [mode = 1] : Human vs AI
                         [mode = 2] : AI vs Human
                         [mode = 3] : AI vs AI
-                        [time]     : Time for AI in ms
+                        [time]     : base + inc
 ```
 
 ## License
 
-Only binary is released.
+Only binary is released
