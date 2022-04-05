@@ -2,19 +2,19 @@
 
 # Paladin
 
-Linux mayhem chess engine. Written in C++17
-Started as Mayhem chess960 engine.
+Linux Mayhem Chess variant engine. Written in C++17
+Started as Mayhem Chess960 engine.
 Only mayhem chess variant supported.
 
 ## Design goals
 
-- Paladin is designed to be GUI independent. Full UCI support as in Mayhem.
+- Paladin is designed to be GUI independent. Full UCI support as in Mayhem
 - Paladin is lightweight and simple
 - OOP / modular design. No globals as in Mayhem
 - Robust and small codebase. Paladin is super stable
 - Nice internal GUI. You only need the binary
 
-## Link to the variant
+## Link to the mayhem chess variant
 
 [Mayhem Chess variant](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
 
@@ -22,30 +22,30 @@ Only mayhem chess variant supported.
 
 - v0.1: Initial release
 - v1.0: Current. First really good version.
-  Tons of bug fixes / improvements. Whole codebase is modular and OOP.
+  Tons of bug fixes / improvements. Whole codebase is modular and OOP
 
-## Demo / Release
+## Demo
 
 v0.1 of real Paladin is released to the public.
 Paladins are given for free to testers. (Please contact by email).
 And sold to public.
 
-## Signatures
+## Signatures of Paladin
 
 ```
 perft -> 220873071
 bench -> 9793187
 ```
 
-## Mayhem chess startpos
+## Mayhem chess variant startpos
 
 `anpqkpna/p1r2r1p/1p1pp1p1/8/8/1P1PP1P1/P1R2R1P/ANPQKPNA w 0 1`
 
-## Mayhem chess rules
+## Mayhem chess variant rules
 
 Normal chess rules except ...
 
-- The paladin is archbishop N+B
+- The Paladin is archbishop N+B
 - The Janus pawns (= pawns) may capture forward and backward
 - Castling is not permitted
 - En passant captures are not legal
@@ -269,7 +269,7 @@ c2c4 h1g1 b2a2 g1f2 a2a3 f8f7 a3a2 f3d2 c1d2 f2d2 a2a3 d2c2
 f1f2 c2b1 f2f3 b1a1 a3b4 a1b2 { Black wins } 0-1
 ```
 
-## Monte Carlo analysis
+## Monte-Carlo analysis
 
 `> monte 30000`
 
