@@ -28,7 +28,7 @@ v0.1 of real Paladin is released to the public.
 Paladins are given for free to testers. (Please contact by email).
 And sold to public.
 
-## Signatures of Paladin
+## Paladin signatures
 
 ```
 perft -> 220873071
@@ -48,7 +48,7 @@ Normal chess rules except ...
 - Castling is not permitted
 - En passant captures are not legal
 - The Queen is restricted to 4 moves max
-- [Rules](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
+- [Mayhem chess rules](https://www.chessvariants.com/diffsetup.dir/mayhem.html)
 
 ## Nice ASCII art board
 
