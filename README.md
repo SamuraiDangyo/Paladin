@@ -34,7 +34,7 @@ And sold to public.
 
 ```
 perft -> 220873071
-bench -> 10773562
+bench -> 9793187
 ```
 
 ## Mayhem chess startpos
